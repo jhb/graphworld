@@ -1,0 +1,37 @@
+<html lang="en" metal:use-macro="templates['main'].macros.main">
+<body>
+
+    <form method="post" metal:fill-slot="content" >
+
+        <b>${', '.join([schema.n.shortname for schema in schemas if schema.match(node)])}</b>
+        <div tal:repeat='field [f for f in form._fields.values() if not f.id.startswith("new_")]'>${field.label} (${field.description})
+            <a href="" tal:attributes='href "?delete=%s" % field.id'
+             onclick="return confirm('Are you sure you want to remove the property?')">[del]</a><br/>${field}</div>
+        <div>&nbsp;</div>
+        <div>----</div>
+        Add a new attribute:<br>
+         <div tal:repeat='field [f for f in form._fields.values() if f.id.startswith("new_")]'>${field.label} (${field.description})<br/>${field}</div>
+
+
+        <input type="submit">
+
+        <ul>
+            <li tal:repeat='schema schemas'>
+                <div>
+                    <input type="checkbox" tal:attributes="checked schema.match(node)" />
+                    <span tal:content="schema.n.shortname"></span>
+                    (<c tal:replace="', '.join(schema.n.labels)" />)
+                </div>
+                <ul>
+                    <li tal:repeat="prop schema.props">
+                        <div tal:content="prop.shortname"></div>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+    </form>
+
+
+</body>
+</html>

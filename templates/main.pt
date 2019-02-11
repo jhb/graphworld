@@ -1,0 +1,24 @@
+<tal metal:define-macro="main" tal:omit-tag=""><!doctype html>
+<html>
+<head>
+
+</head>
+<body tal:define='messages flask.get_flashed_messages()' >
+<span style="font-size: 90%">
+<a href="/nodelist">Nodelist</a>
+<hr>
+<div>
+    <div tal:condition="not messages">&nbsp;</div>
+    <div tal:repeat="message messages"><span style="background-color:yellow">${structure: message}</span></div>
+    <div>&nbsp;</div>
+</div>
+
+
+    <div metal:define-slot="content">
+        Main Content
+
+    </div>
+    </span>
+</body>
+</html>
+</tal>

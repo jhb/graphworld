@@ -1,0 +1,25 @@
+<html lang="en" metal:use-macro="templates['main'].macros.main">
+<body>
+
+    <ul metal:fill-slot="content" >
+        <li tal:repeat='node nodes'>
+            <a href="" tal:attributes="href '/node/%s' % node.id; id node.id" >
+                <span tal:replace="node.id"></span>
+                <span tal:replace="', '.join(node.labels)"></span>
+            </a>
+            <small>
+            <ul>
+                <li tal:repeat='item sorted(node.items())'>
+                    <span tal:replace="item[0]"></span>:
+                    <span tal:replace="item[1]"></span>
+                </li>
+
+            </ul>
+            </small>
+        </li>
+
+    </ul>
+
+
+</body>
+</html>
