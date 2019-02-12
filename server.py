@@ -34,7 +34,7 @@ class TemplateWrapper:
         return self.template(**kwargs)
 
 def getTemplate(name):
-    templates = PageTemplateLoader('templates', '.pt')
+    templates = PageTemplateLoader('graphworld/templates', '.pt')
     return TemplateWrapper(templates[name],flask=flask,templates=templates)
 
 def getSemProperties():

@@ -1,0 +1,123 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: arial, sans-serif;
+        }
+
+        .description {
+            font-size: 0.9em;
+            color: black;
+        }
+
+        a.wikilink {
+            color: darkgreen;
+            font-size: 0.9em;
+        }
+        .results div {
+            margin-bottom: 2px;
+        }
+
+        .link {
+            margin-bottom: 2px;
+            font-size: 0.9em;
+        }
+
+        .link a {
+            color: #777777;
+        }
+
+        .linkcount {
+            font-size:0.5em;
+        }
+
+        .rightcolumn {
+            padding-left: 50px;
+        }
+
+        .heading, .results div.heading{
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+
+        .trail a {
+            text-decoration: none;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<form action="/" method="POST">
+    <input name="searchstring" value="${searchtext}"> <input type="submit" value="search">
+</form>
+
+<div class="trail">Trail:
+    <span tal:repeat='de displaytrail'>
+        <a href="/${'/'.join(path[:repeat.de.index+1])}/" tal:omit-tag='repeat.de.index==len(displaytrail)-1'>${de}</a>
+        <span tal:condition='repeat.de.index < len(displaytrail)-1'>/</span>
+    </span>
+    <div>&nbsp;</div>
+</div>
+<table>
+    <tr valign="top">
+        <td>
+            <div class="heading">Incoming Links</div>
+            <form>
+
+                <div class='link' tal:repeat='inlink incoming'>
+                    <input type="checkbox" name='linktype' value="${inlink[1]}" tal:omit-tag="">
+                    <a href="in=${inlink[1]}/">${inlink[1].replace('dbpedia:','')}</a> <span class="linkcount">${inlink[0]}</span>
+                </div>
+
+            </form>
+
+        </td>
+        <td width="50%" class="results">
+            <span tal:condition='results and results[-1][0]'>
+                <div class="heading">Results: ${results[-1][0]}</div>
+                <div tal:repeat='nid results[-1][1][:100]'>
+                    <span tal:define='node zg.nodes[nid]'>
+                        <div><b><a  href="/nodeid=${node._id}/">${getattr(node,'title','').replace('_',' ').replace('dbpedia:','')}</a></b></div>
+                        <div><a tal:define='wikilink "https://en.wikipedia.org/wiki/"+getattr(node,"title","").replace("dbpedia:","")'
+                                tal:attributes='href wikilink'
+                                tal:content="wikilink"
+                                class='wikilink'
+                                href="wikipedia"
+                                target="wikipedia">foobar</a></div>
+                        <div class="description">${getattr(node,'abstract','')}</div>
+                        <div>&nbsp;</div>
+                    </span>
+                </div>
+            </span>
+            <dl tal:condition='results and results[-1][0]==1'>
+                <span tal:define='node zg.nodes[results[-1][1][0]]'
+                      tal:repeat='data node.raw'
+                      tal:omit-tag=''>
+                    <dt><b>${data[0]}</b></dt>
+                    <dd>${data[1]} <small><i>${data[2]}</i></small></dd>
+                </span>
+
+            </dl>
+
+        </td>
+        <td class="rightcolumn">
+            <div class="heading">Outgoing Links</div>
+            <xform>
+
+                <div class='link' tal:repeat='outlink outgoing'>
+                    <input type="checkbox" name='linktype' value="${outlink[1]}" tal:omit-tag="">
+                    <a href="out=${outlink[1]}/">${outlink[1].replace('dbpedia:','')}</a> <span class="linkcount">${outlink[0]}</span>
+                </div>
+
+            </xform>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+
+</html>
