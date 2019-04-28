@@ -1,0 +1,80 @@
+Komponenten
+===========
+
+Database
+--------
+- node
+  - crud
+  - incominig
+  - outgoing
+- kanten crud
+- Indizes verwalten
+- Transaction
+  - begin
+  - commit
+  - rollback
+- query
+
+Hierarchie
+----------
+- Knoten hinzufügen
+- Zirkulariät verhindern
+- Alle Kindknoten finden
+
+Property
+--------
+- Property anlegen
+  - Name
+  - Skalar
+  - Arity (min,max?)
+  - Defaultwerte
+- Property entfernen
+
+Schema
+------
+- KnotenSchema definieren
+- Relationstypen definieren
+- DuckType erkennen
+- Schema zuweisen (und damit Properties)
+- Schema entfernen (und damit Properties)
+
+Rechte
+------
+- Rechte definieren
+- Rollen definieren
+- Gruppen definieren
+- User definieren
+- Rechte-Rollen managen
+- Rollen-Gruppen managen
+- Rollen-User managen
+- Gruppen-User managen
+
+- ante-filter
+- post-filter
+
+History
+-------
+- Knoten historisieren
+- History anzeigen
+- History löschen
+
+Editor
+------
+- Knoten crud
+- Kanten crud
+- Property Widgets
+
+GUI
+---
+- Visualisierung
+  - 3D, 2D
+  - Alle Knoten
+  - Submenge an Knoten
+- Abfragewidgets
+  - Timeline
+  - Karten
+  - Balken
+
+(vgl. Graphileon)
+
+
