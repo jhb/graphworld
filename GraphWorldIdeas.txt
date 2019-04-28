@@ -6,34 +6,34 @@ Schema
 
 Zwei Arten von Schemaverarbeitung:
 - Duck Typing, d.h. es wird anhand von Properties erkannt, welche Schemata zutreffen
-- Zuweisen: es können Schemata zugeordnet werden, entsprechende Properties werden gesetzt, und evlt. mit Default-Werten versehen
+- Zuweisen: es kÃ¶nnen Schemata zugeordnet werden, entsprechende Properties werden gesetzt, und evlt. mit Default-Werten versehen
 
-Beide Ansätze werden in Spezialproperties auf der Instanz gecached und indiziert.
+Beide AnsÃ¤tze werden in Spezialproperties auf der Instanz gecached und indiziert.
 
 Die Schema werden aus Knoten und Kanten definiert, siehe Vorarbeiten mit Christoph.
 
 Editor
 ------
 
-Der Editor muss mit den Schemata umgehen können. 
+Der Editor muss mit den Schemata umgehen kÃ¶nnen. 
 
 Rechte
 ------
 
-Letztlich müssen die Rechte auf der Instanz gecached werden, d.h. welche Gruppen können gerade auf die Instanz zugreifen. Siehe Zope. ACL.
+Letztlich mÃ¼ssen die Rechte auf der Instanz gecached werden, d.h. welche Gruppen kÃ¶nnen gerade auf die Instanz zugreifen. Siehe Zope. ACL.
 
 Wie aber kommt man zu den Rechten, die gecached werden?
 
-- Zunächst darf auf nichts zugegriffen werden
+- ZunÃ¤chst darf auf nichts zugegriffen werden
 - Direkte Verrechtung auf der Instanz
 - Verrechtung anhand von Properties
-- Verrechtung anhand der Einordnung in einer Hierarchie/DAG. Können mehrere Hierarchien bestehen?
-- Evtl. Verrechtung entland von geraden Pfaden (DAG). Evtl. länger als 1. Beispiel Instanz eines Metaknotens, Metaknoten ist verrechtet.
-- Komplexe Regeln, wobei man hier schnell das Land von OWL betritt, und nicht klar ist, ob man beim Schreiben oder Lesen anwendet, zumal dann jede neue Kante (aus dem abgefragten set) alle Knoten betreffen kann. Einschränkung auf DAG, Kantentypen. Setzt evtl. ein Event-Subscriber System voraus.
+- Verrechtung anhand der Einordnung in einer Hierarchie/DAG. KÃ¶nnen mehrere Hierarchien bestehen?
+- Evtl. Verrechtung entland von geraden Pfaden (DAG). Evtl. lÃ¤nger als 1. Beispiel Instanz eines Metaknotens, Metaknoten ist verrechtet.
+- Komplexe Regeln, wobei man hier schnell das Land von OWL betritt, und nicht klar ist, ob man beim Schreiben oder Lesen anwendet, zumal dann jede neue Kante (aus dem abgefragten set) alle Knoten betreffen kann. EinschrÃ¤nkung auf DAG, Kantentypen. Setzt evtl. ein Event-Subscriber System voraus.
 
-Die Rechteregel müsste folgendes erfüllen:
-- für eine Instanz herausfinden, welche Gruppen zugreifen dürfen (Blick nach oben)
-- für eine Instanz herausfinden, welche Objekte indirekt betroffen sind (Blick nach unten). Siehe Zope/Plone.
+Die Rechteregel mÃ¼sste folgendes erfÃ¼llen:
+- fÃ¼r eine Instanz herausfinden, welche Gruppen zugreifen dÃ¼rfen (Blick nach oben)
+- fÃ¼r eine Instanz herausfinden, welche Objekte indirekt betroffen sind (Blick nach unten). Siehe Zope/Plone.
 
 Voraussetzung ist eine ACL Verwaltung, d.h.
 
@@ -45,15 +45,15 @@ Voraussetzung ist eine ACL Verwaltung, d.h.
 
 Siehe Zope.
 
-Überlegung, eine GUI mit Mengenlehre zu bauen. D.h. man kann mit Regeln Mengen definieren, und dann den Kombination von Mengen Rechte zuweisen.
+Ãœberlegung, eine GUI mit Mengenlehre zu bauen. D.h. man kann mit Regeln Mengen definieren, und dann den Kombination von Mengen Rechte zuweisen.
 
 Historie
 --------
 
-Schön wäre ein/mehrere Plugins zur Historisierung von Instanzen
+SchÃ¶n wÃ¤re ein/mehrere Plugins zur Historisierung von Instanzen
  
 
 Allgemein
 ---------
 
-Das ganze braucht eine Backend-Gui. Ein Vergleich zum ZMI drängt sich auf. Dies würde vor allem _eine_ Hierarchie bedeuten. Dies ist viel einfacher zu managen und zu verstehen. Vorüberlegungen mit Tom? Mengen-Gui für Rechte? 
+Das ganze braucht eine Backend-Gui. Ein Vergleich zum ZMI drÃ¤ngt sich auf. Dies wÃ¼rde vor allem _eine_ Hierarchie bedeuten. Dies ist viel einfacher zu managen und zu verstehen. VorÃ¼berlegungen mit Tom? Mengen-Gui fÃ¼r Rechte? 
